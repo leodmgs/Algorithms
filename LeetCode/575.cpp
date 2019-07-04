@@ -4,15 +4,17 @@
 
 using namespace std;
 
+/*
+	Success 
+	Runtime: 308 ms, faster than 57.50% of C++ online submissions for Distribute Candies.
+	Memory Usage: 51 MB, less than 35.85% of C++ online submissions for Distribute Candies.
+ */
 int distributeCandies(vector<int>& candies) 
 {
 	int n = candies.size();
 	unordered_map<int,int> kinds;
 	for (int i = 0; i < n; ++i)
-		if (kinds.find(candies[i]) == kinds.end())
-			kinds[candies[i]] = 1;
-		else
-			kinds[candies[i]] += 1;
+		kinds.find(candies[i]) == kinds.end() ? kinds[candies[i]] = 1 : ++kinds[candies[i]];
 	return kinds.size() < n/2 ? kinds.size() : n/2;
 }
 
